@@ -19,6 +19,12 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   //@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
+   //@OneToOne(fetch = FetchType.LAZY, optional = false)
+   @JoinColumn(name = "car_id", nullable = false)
+   private Car car;
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {
