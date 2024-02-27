@@ -12,7 +12,12 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   private SessionFactory sessionFactory;
+   private final SessionFactory sessionFactory;
+
+   @Autowired
+   public UserDaoImp(SessionFactory sessionFactory) {
+      this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
@@ -37,8 +42,4 @@ public class UserDaoImp implements UserDao {
       return (User) query.getSingleResult();
    }
 
-   @Autowired
-   public void setSessionFactory(SessionFactory sessionFactory) {
-      this.sessionFactory = sessionFactory;
-   }
 }
